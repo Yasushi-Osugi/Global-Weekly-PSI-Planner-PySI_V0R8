@@ -1,0 +1,111 @@
+
+# -------------------------
+# Python 基本
+# -------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ビルド & 配布
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+# 仮想環境
+.venv/
+venv/
+.env
+.python-version
+.conda/
+.envrc
+.direnv/
+
+# テスト/静的解析のキャッシュ
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+.cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# エディタ / OS
+.vscode/
+.idea/
+*.iml
+*.code-workspace
+.DS_Store
+Thumbs.db
+
+# -------------------------
+# プロジェクト固有（PSI Planner）
+# -------------------------
+
+# 実行時の成果物・レポート
+out/
+reports/
+*.pdf
+*.xlsx
+*.parquet
+
+# 監査・ログ（必要ならコミット対象から除外）
+logs/
+*.log
+*.jsonl
+
+# 供給データ・一時DB（例外を下で許可）
+*.sqlite
+*.db
+*.db-journal
+*.sqlite3
+
+# 一時CSV（例外を下で許可）
+*.csv
+*.tsv
+
+# 図の自動生成キャッシュ
+docs/_build/
+site/
+
+# -------------------------
+# 例外（教育用サンプルや固定アセットは追跡）
+# -------------------------
+
+# examples の配布用データは追跡する
+!examples/**
+# ただし examples 内でも生成物は引き続き除外
+examples/**/out/
+examples/**/reports/
+examples/**/logs/
+
+# docs の画像や図表は追跡
+!docs/**
+
+# plugins の雛形は追跡（中で生成される成果物は除外）
+!plugins/**
+plugins/**/out/
+plugins/**/logs/
+plugins/**/reports/
+
+# SQLite/CSV の配布サンプルを個別に許可（必要に応じて追加）
+!examples/scenarios/*.sqlite
+!examples/scenarios/*.csv
+!examples/scenarios/*.tsv
+
+# -------------------------
+# 追加の言語/ツール（使う場合のみ）
+# -------------------------
+
+# Node（GUIやDocsで使う場合）
+node_modules/
+npm-debug.log*
+
+# Poetry（使う場合）
+.poetry/
+
+# PyCharm プロジェクト設定（必要なら !.idea/ を外す）
