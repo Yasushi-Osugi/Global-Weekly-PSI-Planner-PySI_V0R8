@@ -1,9 +1,7 @@
-# Global-Weekly-PSI-Planner-PySI_V0R8
-Weekly-synchronized PSI (product×node×ISO week) planning engine. Extensible via Hooks/Plugins for industry packs &amp; optimization modules.
+# WSO:Weekly Syncronied Operation / Global-Weekly-PSI-Planner-PySI_V0R8
+以下はAI(chatGPT)との会話から生成されたWSOの仕様書です。
 
-251023_2102仕様書PySI_Weekly_PSI_Planner_V0R8
-
-PySI / Weekly PSI Planner (V0R8) — Core Spec (Dual-Tree + Lot-ID Lists)
+WSO:Weekly Syncronied Operation / PySI / Weekly PSI Planner (V0R8) — Core Spec (Dual-Tree + Lot-ID Lists)
 日付: 2025-10-23 (JST)
 正本ポリシー: V0R7「二本のツリー × 各ノードに週×[S,CO,I,P]（lot_IDのリスト）」をそのまま正本としてV0R8に継承。高速化は実装テクニックで達成。
 数量の定義: すべて「ロットは不可分」、数量 = len(その週・そのバケツの lot_ID リスト)。
@@ -397,8 +395,13 @@ ________________________________________
 ダウンロード
 Word 版はこの仕様の全文を章立てで整理済みです。今後の差分もこのファイルを「正本」として継続更新していけます。
 必要に応じて、GUIプレビュー用の hist 追記テンプレや、FEFOプラグイン最小実装も続けてお渡しします。
-
-【補足】
+あなた:
+確認です。「GUIプレビュー用の hist 追記テンプレ」の"hist"は、どのような意味、内容ですか? また、histとはhistoryの事ですか?
+ChatGPT:
+思考時間: 6s
+はい、そのとおりです。ここで言う hist は “history（履歴）” の略で、
+週ごとの可視化（GUIプレビューやレポート）のために蓄積する軽量な時系列スナップショットを指します。
+________________________________________
 hist の目的と位置づけ
 •	目的：GUIの折れ線グラフや表ですぐに描ける軽量ビューを、週ループ中に逐次貯めるための履歴バッファ
 •	位置：root["state"]["hist"]（＝Coreの正本 spec/raw/root/state のうち、state に属する「ビュー層」データ）
@@ -531,3 +534,4 @@ ________________________________________
 •	ビュー用なので軽量を維持（lot明細は入れない）。必要なら別に ops_log や stock_snapshot を用意。
 必要でしたら、record_hist_snapshot を **Hook（例：viz:hist:record）**として外出しする形や、
 backlog（合成SYN）のカウントを確実に取るための ops_log 記録テンプレも続けてご用意できます。
+
